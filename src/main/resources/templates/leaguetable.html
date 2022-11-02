@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Statistics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>League Table</h2>
+	<div>
+    <table>
+		<tr>
+			<th>Position</th>
+		    <th>Team</th>
+		    <th>Played</th>
+		    <th>Wins</th>
+		    <th>Draws</th>
+		    <th>Losses</th>
+		    <th>Points</th>
+		</tr>  
+    	<tr th:each = "team : ${teams}">
+    		<td th:text="${}"></td>
+    		<td th:text="${team.name}"></td>
+    		<td th:text="${team.games}"></td>
+    		<td th:text="${team.wins}"></td>
+    		<td th:text="${team.draws}"></td>
+    		<td th:text="${team.losses}"></td>
+    		<td th:text="${}"></td>
+    	</tr>
+     </table>
+     </div>
+</body>
+</html>

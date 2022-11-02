@@ -29,4 +29,16 @@ public class FootballController {
 		return "statspage";
 	}
 	
+	@RequestMapping(value="/players")
+	public String getPlayers(Model model) {
+		model.addAttribute("players", repository.findAll());
+		return "playerlist";
+	}
+	
+	@RequestMapping(value="/leaguetable")
+	public String getTable(Model model) {
+		model.addAttribute("teams", trepository.findAll());
+		return "leaguetable";
+	}
+	
 }
