@@ -4,18 +4,27 @@
     <title>Profile</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/css/playercard.css"/>
+    <link rel="stylesheet" href="/css/navbar.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+<ul>
+  	<li><a href="/home">Home</a></li>
+  	<li><a href="/leaguetable">Tables</a></li>
+  	<li><a href="/stats">Stats</a></li>
+  	<li><a href="/players">PlayerDB</a></li>
+  	<li style="float:right"><a href="/login">Login</a></li>
+</ul>
 <div class="card" th:object="${player}">
   <h1><span th:text="*{name}"></span></h1>
   <p>Date of birth:<span th:utext="*{birthdate}"></span></p>
   <p>Nationality:<span th:utext="*{nationality}"></span></p>
   <p>Club:<span th:utext="*{team.name}"></span></p>
-  <p><b>Appearances:</b> <span th:utext="*{games}"></span></p>
+  <p>Appearances: <span th:utext="*{games}"></span></p>
   <p>Goals:<span th:utext="*{goals}"></span></p>
   <p>Assists:<span th:utext="*{assists}"></span></p>
-  <a th:href="@{/deleteplayer/{id}(id=*{playerid})}"><button>Delete</button></a><a th:href="@{/editplayer/{id}(id=*{playerid})}"><button>Edit</button></a>
+  <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteplayer/{id}(id=*{playerid})}"><button>Delete</button></a><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/editplayer/{id}(id=*{playerid})}"><button>Edit</button></a>
 </div>
-<p>Return to </p>
+<p>Return to <a href="/players">playerlist</a></p>
 </body>
 </html>

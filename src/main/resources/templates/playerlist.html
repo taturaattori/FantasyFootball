@@ -3,13 +3,25 @@
 <head>
     <title>Players</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/navbar.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+<ul>
+  	<li><a href="/home">Home</a></li>
+  	<li><a href="/leaguetable">Tables</a></li>
+  	<li><a href="/stats">Stats</a></li>
+  	<li><a href="/players">PlayerDB</a></li>
+  	<li style="float:right"><form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+			<input type="submit" value="Sign Out"/>
+		</form>
+	</li>
+  	<li style="float:right"><a href="/login">Login</a></li>
+	</ul>
 	<h2>Player database</h2>
-	
-	<input type="text" id="myInput" onkeyup="filterPlayers()" placeholder="Search from database"/><a href=/addplayer>Add player</a>
+	<input type="text" id="myInput" onkeyup="filterPlayers()" placeholder="Search from database"/><div sec:authorize="hasAuthority('ADMIN')"><a href=/addplayer>Add player</a></div>
 	<div>
-    <table id="myTable">
+    <table id="myTable" class="table table-striped">
 		<tr>
 			<th>Name</th>
 			<th>Nationality</th>

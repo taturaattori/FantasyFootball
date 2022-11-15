@@ -3,6 +3,7 @@
 <head>
     <title>Edit player</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Edit player</h1>
@@ -14,16 +15,16 @@
 	<input type="hidden" id="nationality" th:field="*{nationality}" readonly="readonly"/>
 	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
 	<label for="name">Name</label>
-	<input type="text" id="author" th:field="*{name}" class="form-control" />
+	<input type="text" id="name" th:field="*{name}" class="form-control" />
 	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
 	<label for="games">Apps</label>
-	<input type="number" id="title" th:field="*{games}" class="form-control" />
+	<input type="number" id="games" th:field="*{games}" class="form-control" min="0" />
 	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
 	<label for="goals">Goals</label>
-	<input type="number" th:field="*{goals}" class="form-control" />
+	<input type="number" th:field="*{goals}" class="form-control" min="0" />
 	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
 	<label for="assists">Assists</label>
-	<input type="number" th:field="*{assists}" class="form-control" />
+	<input type="number" th:field="*{assists}" class="form-control" min="0" />
 	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
 	<label for="teams">Team</label>
 	<select id="teams" th:field="*{team}" class="form-control">

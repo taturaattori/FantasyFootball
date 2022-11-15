@@ -15,6 +15,8 @@ import hh.swd20.FantasyFootball.domain.Player;
 import hh.swd20.FantasyFootball.domain.PlayerRepository;
 import hh.swd20.FantasyFootball.domain.Team;
 import hh.swd20.FantasyFootball.domain.TeamRepository;
+import hh.swd20.FantasyFootball.domain.User;
+import hh.swd20.FantasyFootball.domain.UserRepository;
 
 @SpringBootApplication
 public class FantasyFootballApplication {
@@ -25,7 +27,7 @@ public class FantasyFootballApplication {
 	}
 
 	@Bean
-	public CommandLineRunner footballDemo(PlayerRepository prepository, TeamRepository trepository, LeagueRepository lrepository) {
+	public CommandLineRunner footballDemo(PlayerRepository prepository, TeamRepository trepository, LeagueRepository lrepository, UserRepository urepository) {
 		return (args) -> {
 			log.info("save some sample data");
 			League league1 = new League("Premier League");
@@ -42,6 +44,8 @@ public class FantasyFootballApplication {
 			prepository.save(new Player("Bukayo Saka", "England", fdate.parse("20.10.2001"), 0, 25, 1, team1));
 			prepository.save(new Player("Joe Gomez", "England", fdate.parse("02.02.1995"), 0, 0, 0, team2));
 			
+			User user1 = new User("admin", "$2a$10$4L5oLdky1gFarOguCqCipuYner4xbWe20IcAZgjGRMqG6G6bTcd3a", "ADMIN"); //reppu
+			urepository.save(user1);
 			
 			log.info("fetch test data");
 			for (League league : lrepository.findAll()) {
