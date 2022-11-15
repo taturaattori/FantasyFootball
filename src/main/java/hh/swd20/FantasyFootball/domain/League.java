@@ -22,6 +22,10 @@ public class League {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
 	private List<Team> teams;
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "league")
+	private List<Player> players;
 
 	public League(String name) {
 		super();
@@ -54,6 +58,15 @@ public class League {
 
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
+	}
+	
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 
 	@Override

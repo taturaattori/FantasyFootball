@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Players</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Player database</h2>
+	
+	<input type="text" id="myInput" onkeyup="filterPlayers()" placeholder="Search from database"/><a href=/addplayer>Add player</a>
+	<div>
+    <table id="myTable">
+		<tr>
+			<th>Name</th>
+			<th>Nationality</th>
+		    <th>Team</th>
+		    <th>Appearances</th>
+		</tr>  
+    	<tr th:each = "player : ${players}">
+    		<td> <a th:text="${player.name}" th:href="@{/playerprofile/{id}(id=${player.playerid})}"></a></td>
+    		<td th:text="${player.nationality}"></td>
+    		<td th:text="${player.team.name}"></td>
+    		<td th:text="${player.games}"></td>
+    	</tr>
+     </table>
+
+    </div>
+    <script>
+    function filterPlayers() {
+    	  var input, filter, table, tr, td, i;
+    	  input = document.getElementById("myInput");
+    	  filter = input.value.toUpperCase();
+    	  table = document.getElementById("myTable");
+    	  tr = table.getElementsByTagName("tr");
+    	  for (var i = 0; i < tr.length; i++) {
+    	    var tds = tr[i].getElementsByTagName("td");
+    	    var flag = false;
+    	    for(var j = 0; j < tds.length; j++){
+    	      var td = tds[j];
+    	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    	        flag = true;
+    	      } 
+    	    }
+    	    if(flag){
+    	        tr[i].style.display = "";
+    	    }
+    	    else {
+    	        tr[i].style.display = "none";
+    	    }
+    	  }
+    	}
+    </script>
+</body>
+</html>

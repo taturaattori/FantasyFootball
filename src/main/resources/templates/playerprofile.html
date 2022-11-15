@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/playercard.css"/>
+</head>
+<body>
+<div class="card" th:object="${player}">
+  <h1><span th:text="*{name}"></span></h1>
+  <p>Date of birth:<span th:utext="*{birthdate}"></span></p>
+  <p>Nationality:<span th:utext="*{nationality}"></span></p>
+  <p>Club:<span th:utext="*{team.name}"></span></p>
+  <p><b>Appearances:</b> <span th:utext="*{games}"></span></p>
+  <p>Goals:<span th:utext="*{goals}"></span></p>
+  <p>Assists:<span th:utext="*{assists}"></span></p>
+  <a th:href="@{/deleteplayer/{id}(id=*{playerid})}"><button>Delete</button></a><a th:href="@{/editplayer/{id}(id=*{playerid})}"><button>Edit</button></a>
+</div>
+<p>Return to </p>
+</body>
+</html>

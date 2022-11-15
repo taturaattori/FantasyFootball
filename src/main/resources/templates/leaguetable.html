@@ -18,13 +18,13 @@
 		    <th>Points</th>
 		</tr>  
     	<tr th:each = "team : ${teams}">
-    		<td th:text="${}"></td>
+    		<td></td>
     		<td th:text="${team.name}"></td>
     		<td th:text="${team.games}"></td>
     		<td th:text="${team.wins}"></td>
     		<td th:text="${team.draws}"></td>
     		<td th:text="${team.losses}"></td>
-    		<td th:text="${}"></td>
+    		<td th:text="${team.points}"></td>
     	</tr>
      </table>
      </div>

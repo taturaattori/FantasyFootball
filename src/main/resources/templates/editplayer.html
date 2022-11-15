@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit player</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit player</h1>
+    <form th:object="${player}" th:action="@{../saveplayer}" action="#" method="post">
+	<label for="id"></label>
+	<input type="hidden" id="id" th:field="*{playerid}" readonly="readonly"/>
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="nationality"></label>
+	<input type="hidden" id="nationality" th:field="*{nationality}" readonly="readonly"/>
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="name">Name</label>
+	<input type="text" id="author" th:field="*{name}" class="form-control" />
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="games">Apps</label>
+	<input type="number" id="title" th:field="*{games}" class="form-control" />
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="goals">Goals</label>
+	<input type="number" th:field="*{goals}" class="form-control" />
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="assists">Assists</label>
+	<input type="number" th:field="*{assists}" class="form-control" />
+	<div style="clear: both; display: block; height: 10px;" class="form-group"></div>
+	<label for="teams">Team</label>
+	<select id="teams" th:field="*{team}" class="form-control">
+       	<option th:each="team: ${teams}" th:value="${team.teamid}" th:text="${team.name}"></option>
+    </select>
+    <div style="clear: both; display: block; height: 10px;"></div>
+	<input type="submit" value="Save"></input><a href="/playerprofile/{id}">Cancel</a>
+	</form>  	
+</body>
+</html>

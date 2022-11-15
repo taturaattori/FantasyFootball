@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New player</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>New player</h1>
+	<div>
+		<form th:object="${player}" th:action="@{saveplayer}" action="#" method="post">
+		  	<label for="name">Name</label>
+			<input type="text" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="nationality">Nationality</label>
+			<input type="text" th:field="*{nationality}" />
+			<div style="clear: both; display: block; height: 10px;"></div>		
+			<label for="birthdate">Date of birth</label>
+			<input placeholder="dd.mm.yyyy" type="date"  th:field="*{birthdate}" />
+			<div style="clear: both; display: block; height: 10px;"></div>	
+		  	<label for="teams">Team</label>
+			 <select id="teams" th:field="*{team}" class="form-control">
+       			<option th:each="team: ${teams}" th:value="${team.teamid}" th:text="${team.name}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input><a href="/players">Cancel</a>
+		</form>
+	</div>
+</body>
+</html>

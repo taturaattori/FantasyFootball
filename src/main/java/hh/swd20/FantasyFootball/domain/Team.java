@@ -26,6 +26,7 @@ public class Team {
 	private int losses;
 	private int draws;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "leagueid")
 	private League league;
@@ -92,6 +93,10 @@ public class Team {
 		this.draws = draws;
 	}
 	
+
+	public int getPoints() {
+		return (wins * 3) + draws;
+	}
 
 	public League getLeague() {
 		return league;
