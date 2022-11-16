@@ -25,7 +25,7 @@ public class Team {
 	private int wins;
 	private int losses;
 	private int draws;
-	
+	private int points;
 	
 	@ManyToOne
 	@JoinColumn(name = "leagueid")
@@ -50,6 +50,11 @@ public class Team {
 		super();
 		this.name = name;
 		this.league = league;
+	}
+	
+	public Team(String name) {
+		super();
+		this.name = name;
 	}
 	
 	public Team() {
@@ -93,7 +98,9 @@ public class Team {
 		this.draws = draws;
 	}
 	
-
+	public void setPoints(int points) {
+		this.points = points;
+	}
 	public int getPoints() {
 		return (wins * 3) + draws;
 	}

@@ -53,7 +53,7 @@ public class FootballController {
 	// show teams in a league in order by points
 	@RequestMapping(value="/leaguetable")
 	public String getTable(Model model) {
-		model.addAttribute("teams", trepository.findAll());
+		model.addAttribute("teams", trepository.findAllOrderByPointsDesc());
 		return "leaguetable";
 	}
 	

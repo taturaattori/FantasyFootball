@@ -34,13 +34,15 @@ public class FantasyFootballApplication {
 			lrepository.save(league1);
 			
 			Team team1 = new Team("Arsenal", 15, 12, 1, 2, league1);
-			Team team2 = new Team("Liverpool", league1);
+			Team team2 = new Team("Liverpool", 15, 9, 4, 2, league1);
+			Team team3 = new Team("Chelsea", 15, 10, 1, 4, league1);
 			trepository.save(team1);
 			trepository.save(team2);
+			trepository.save(team3);
 			
 			SimpleDateFormat fdate = new SimpleDateFormat("dd.MM.yyyy");
 			prepository.save(new Player("Gabriel Jesus", "Brazil", fdate.parse("01.01.1999"), 1, 12, 2, team1));
-			prepository.save(new Player("Darwin Nunez", "Urugauy", fdate.parse("13.04.1999"), 0, 7, 5, team2));
+			prepository.save(new Player("Darwin Nunez", "Uruguay", fdate.parse("13.04.1999"), 0, 7, 5, team2));
 			prepository.save(new Player("Bukayo Saka", "England", fdate.parse("20.10.2001"), 0, 25, 1, team1));
 			prepository.save(new Player("Joe Gomez", "England", fdate.parse("02.02.1995"), 0, 0, 0, team2));
 			
